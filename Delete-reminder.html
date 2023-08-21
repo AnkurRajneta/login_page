@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Reminder</title>
+</head>
+<body>
+    <h1>Delete Reminder</h1>
+    <form id="delete-form">
+        <label for="date">Select Date:</label>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <label for="subject">Select Subject:</label>
+        <select id="subject" name="subject">
+            <option value="week">Weekly</option>
+            <option value="month">Monthly</option>
+            <option value="year">Yearly</option>
+        </select><br><br>
+
+        <label for="reminders">Reminders:</label>
+        <select id="reminders" name="reminders">
+            <option value="reminder1">Reminder 1</option>
+            <option value="reminder2">Reminder 2</option>
+            <option value="reminder3">Reminder 3</option>
+        </select><br><br>
+
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" rows="5" cols="40"></textarea><br><br>
+
+        <button type="button" id="confirmButton">Confirm</button>
+    </form>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const confirmButton = document.getElementById("confirmButton");
+            const remindersDropdown = document.getElementById("reminders");
+
+            confirmButton.addEventListener("click", () => {
+                const selectedReminder = remindersDropdown.value;
+
+                // Remove the selected reminder option from the dropdown
+                const selectedOption = remindersDropdown.querySelector(`option[value="${selectedReminder}"]`);
+                if (selectedOption) {
+                    remindersDropdown.removeChild(selectedOption);
+                    alert("Reminder deleted successfully!");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

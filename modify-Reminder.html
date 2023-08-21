@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modified successfully</title>
+</head>
+<body>
+    <h1>Modified successfully</h1>
+    <form id="Modified">
+        <label for="subject">Subject:</label>
+        <select id="subject" name="subject">
+            <option value="week">week update</option>
+            <option value="month">Month update</option>
+            <option value="year">Year update</option>
+        </select><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="phone">Contact Number:</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
+
+        <label for="description">Add Description:</label><br>
+        <textarea id="description" name="description" rows="5" cols="40" required></textarea><br><br>
+
+        <button type="submit">Confirm</button>
+        
+    </form>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const modifiedForm = document.getElementById("Modified");
+            
+
+            modifiedForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                // Perform form submission or display a confirmation message here
+                alert("Reminder is modified Successfully");
+            });
+
+           
+        });
+    </script>
+</body>
+</html>

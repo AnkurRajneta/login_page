@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reminder Form</title>
+</head>
+<body>
+    <h1>Reminder Form</h1>
+    <form id="reminder-form">
+        <label for="date">Select Date:</label>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <label for="subject">Select Subject:</label>
+        <select id="subject" name="subject">
+            <option value="week">week reminder</option>
+            <option value="m">Meeting</option>
+            <option value="deadline">Deadline</option>
+        </select><br><br>
+
+        <label for="reminders">Reminders:</label>
+        <input type="checkbox" id="reminders" name="reminders" required><br><br>
+
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" rows="5" cols="40"></textarea><br><br>
+
+        <button type="button" id="confirmButton">Confirm</button>
+        <p id="error" style="color: red;"></p>
+    </form>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const confirmButton = document.getElementById("confirmButton");
+            const remindersCheckbox = document.getElementById("reminders");
+            const errorText = document.getElementById("error");
+
+            confirmButton.addEventListener("click", () => {
+                const date = document.getElementById("date").value;
+                const subject = document.getElementById("subject").value;
+                const reminders = remindersCheckbox.checked;
+                const description = document.getElementById("description").value;
+
+                if (!reminders) {
+                    errorText.textContent = "Please mark the checkbox to enable the reminder.";
+                    return;
+                }
+
+                errorText.textContent = ""; // Clear any previous error message
+
+                alert("Reminder is enabled successfully.");
+            });
+        });
+    </script>
+</body>
+</html>

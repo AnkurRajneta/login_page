@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Your Reminders</title>
+    <style>
+        .form-section {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>View Your Reminders</h1>
+    <form id="view-reminders-form">
+        <div class="form-section">
+            <label for="fromDate">Select From Date:</label>
+            <input type="date" id="fromDate" name="fromDate">
+        </div>
+
+        <div class="form-section">
+            <label for="toDate">Select To Date:</label>
+            <input type="date" id="toDate" name="toDate">
+        </div>
+
+        <div class="form-section">
+            <label for="subject">Select Subject:</label>
+            <select id="subject" name="subject">
+                <option value="general">General</option>
+                <option value="meeting">Meeting</option>
+                <option value="deadline">Deadline</option>
+                <option value="birthday">Birthday</option>
+            </select>
+        </div>
+
+        <div class="form-section">
+            <label for="reminderName">Reminder Name:</label>
+            <input type="text" id="reminderName" name="reminderName">
+        </div>
+
+        <div class="form-section">
+            <label for="reminderDescription">Reminder Description:</label>
+            <textarea id="reminderDescription" name="reminderDescription" rows="3"></textarea>
+        </div>
+
+        <div class="form-section">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email">
+        </div>
+
+        <div class="form-section">
+            <label for="contactNo">Contact Number:</label>
+            <input type="tel" id="contactNo" name="contactNo">
+        </div>
+
+        <div class="form-section">
+            <label for="smsNo">SMS Number:</label>
+            <input type="tel" id="smsNo" name="smsNo">
+        </div>
+
+        <div class="form-section">
+            <label for="status">Status:</label>
+            <input type="text" id="status" name="status">
+        </div>
+
+        <div class="form-section">
+            <label for="recurrenceFrequency">Recurrence Frequency:</label>
+            <input type="text" id="recurrenceFrequency" name="recurrenceFrequency">
+        </div>
+
+        <div class="form-section">
+            <label for="checkBox">Checkbox:</label>
+            <input type="checkbox" id="checkBox" name="checkBox">
+        </div>
+
+        <button type="button" id="viewButton">View Reminders</button>
+    </form>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const viewButton = document.getElementById("viewButton");
+            const subjectDropdown = document.getElementById("subject");
+
+            viewButton.addEventListener("click", () => {
+                const selectedSubject = subjectDropdown.value;
+
+                // Object to store predefined values based on subjects
+                const subjectValues = {
+                    general: {
+                        reminderName: "General Reminder",
+                        reminderDescription: "This is a general reminder.",
+                        email: "example@example.com",
+                        contactNo: "123-456-7890",
+                        smsNo: "987-654-3210",
+                        status: "Active",
+                        recurrenceFrequency: "Daily",
+                        checkBox: true
+                    },
+                    meeting: {
+                        reminderName: "Meeting Reminder",
+                        reminderDescription: "Meeting with the team.",
+                        email: "meeting@example.com",
+                        contactNo: "987-654-3210",
+                        smsNo: "123-456-7890",
+                        status: "Scheduled",
+                        recurrenceFrequency: "Weekly",
+                        checkBox: false
+                    },
+                    deadline: {
+                        reminderName: "Deadline Reminder",
+                        reminderDescription: "Project deadline.",
+                        email: "deadline@example.com",
+                        contactNo: "555-555-5555",
+                        smsNo: "111-111-1111",
+                        status: "Urgent",
+                        recurrenceFrequency: "None",
+                        checkBox: true
+                    },
+                    birthday: {
+                        reminderName: "Birthday Reminder",
+                        reminderDescription: "Someone's birthday.",
+                        email: "birthday@example.com",
+                        contactNo: "888-888-8888",
+                        smsNo: "999-999-9999",
+                        status: "Upcoming",
+                        recurrenceFrequency: "Yearly",
+                        checkBox: false
+                    }
+                };
+
+                // Populate input fields with values based on the selected subject
+                const selectedValues = subjectValues[selectedSubject];
+                if (selectedValues) {
+                    document.getElementById("reminderName").value = selectedValues.reminderName;
+                    document.getElementById("reminderDescription").value = selectedValues.reminderDescription;
+                    document.getElementById("email").value = selectedValues.email;
+                    document.getElementById("contactNo").value = selectedValues.contactNo;
+                    document.getElementById("smsNo").value = selectedValues.smsNo;
+                    document.getElementById("status").value = selectedValues.status;
+                    document.getElementById("recurrenceFrequency").value = selectedValues.recurrenceFrequency;
+                    document.getElementById("checkBox").checked = selectedValues.checkBox;
+                }
+            });
+        });
+    </script>
